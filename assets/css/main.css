@@ -3253,4 +3253,253 @@ div#lisaa {
 	background-color: #007bff;
   }
 
+/* =============================================
+   Project Gallery — Cards + Modal
+   ============================================= */
+
+/* --- Filter buttons --- */
+.project-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+	margin: 0 0 2em 0;
+}
+
+.filter-btn {
+	background: transparent;
+	border: solid 2px #efefef;
+	border-radius: 2em;
+	color: #a2a2a2;
+	cursor: pointer;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.8em;
+	padding: 0.4em 1.1em;
+	transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+	border-color: #49bf9d;
+	color: #49bf9d;
+}
+
+.filter-btn.active {
+	background-color: rgba(73, 191, 157, 0.1);
+}
+
+/* --- Cards grid --- */
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2em;
+	margin: 0 0 2em 0;
+}
+
+@media screen and (max-width: 980px) {
+	.projects-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.projects-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* --- Single card --- */
+.project-card {
+	background: #fff;
+	border: solid 1px #efefef;
+	border-radius: 0.5em;
+	cursor: pointer;
+	overflow: hidden;
+	transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+	box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+	transform: translateY(-3px);
+}
+
+.project-card.hidden {
+	display: none;
+}
+
+.project-thumb {
+	overflow: hidden;
+	position: relative;
+}
+
+.project-thumb img {
+	display: block;
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+	transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover .project-thumb img {
+	transform: scale(1.04);
+}
+
+.project-thumb-overlay {
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	color: #fff;
+	display: flex;
+	font-size: 0.9em;
+	justify-content: center;
+	left: 0;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: opacity 0.2s ease-in-out;
+}
+
+.project-card:hover .project-thumb-overlay {
+	opacity: 1;
+}
+
+.project-card-body {
+	padding: 1.2em 1.4em 1.4em;
+}
+
+.project-card-body h3 {
+	font-size: 1em;
+	margin: 0 0 0.5em 0;
+}
+
+.project-card-body p {
+	color: #a2a2a2;
+	font-size: 0.8em;
+	line-height: 1.6em;
+	margin: 0 0 1em 0;
+}
+
+/* --- Tags (shared between card and modal) --- */
+.project-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4em;
+}
+
+.tag {
+	background: rgba(73, 191, 157, 0.12);
+	border: solid 1px rgba(73, 191, 157, 0.4);
+	border-radius: 2em;
+	color: #3aab88;
+	font-size: 0.7em;
+	padding: 0.25em 0.75em;
+}
+
+/* --- Modal overlay --- */
+.project-modal {
+	align-items: center;
+	background: rgba(0, 0, 0, 0.88);
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transition: opacity 0.3s ease-in-out;
+	z-index: 9999;
+}
+
+.project-modal.is-open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modal-box {
+	background: #fff;
+	border-radius: 0.6em;
+	display: flex;
+	flex-direction: row;
+	max-height: 90vh;
+	max-width: 860px;
+	overflow: hidden;
+	position: relative;
+	width: 90vw;
+}
+
+@media screen and (max-width: 736px) {
+	.modal-box {
+		flex-direction: column;
+		max-height: 92vh;
+		overflow-y: auto;
+	}
+}
+
+.modal-image {
+	flex: 0 0 45%;
+	overflow: hidden;
+}
+
+.modal-image img {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+@media screen and (max-width: 736px) {
+	.modal-image {
+		flex: 0 0 auto;
+		height: 200px;
+		width: 100%;
+	}
+}
+
+.modal-details {
+	flex: 1;
+	overflow-y: auto;
+	padding: 2.5em 2em;
+}
+
+.modal-details h3 {
+	font-size: 1.3em;
+	margin: 0 0 0.6em 0;
+}
+
+.modal-details .project-tags {
+	margin: 0 0 1.2em 0;
+}
+
+.modal-desc {
+	color: #a2a2a2;
+	font-size: 0.85em;
+	line-height: 1.7em;
+	margin: 0 0 1.6em 0;
+}
+
+.modal-link {
+	display: inline-block;
+}
+
+.modal-close {
+	background: transparent;
+	border: none;
+	color: #a2a2a2;
+	cursor: pointer;
+	font-size: 1.6em;
+	line-height: 1;
+	padding: 0.1em 0.3em;
+	position: absolute;
+	right: 0.6em;
+	top: 0.5em;
+	transition: color 0.2s ease-in-out;
+	z-index: 1;
+}
+
+.modal-close:hover {
+	color: #787878;
+}
+
   

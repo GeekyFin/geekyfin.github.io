@@ -31,7 +31,7 @@
 					<section id="one">
 						<header class="major">
 							<h2 style="margin-bottom:0.1em">Mikko Sortti</h2>
-							<h5 style="margin-top:0;margin-bottom:1.5em;">Head of ICT services for joined information management of Wellfare services county of North Ostrobothnia and Wellfare county of Lapland</h5>
+							<h5 style="margin-top:0;margin-bottom:1.5em;">Head of ICT services<br />for joined information management of Wellfare services county of North Ostrobothnia and Wellfare county of Lapland</h5>
 						</header>
 						<p>Versatile IT professional based in Oulu, Finland, with 15+ years of experience in IT service operation, management and project management.
 						A husband and father of two beautiful children. </p>
@@ -39,7 +39,7 @@
 						Lately especially in data analysis, visualization and data driven decision making.</p>
 						
 						<ul class="actions">
-							<li class="button" id="naytadivi">Learn More</li>
+							<li class="button" id="naytadivi">Work & Education</li>
 						</ul>
 						<div id="lisaa">
 
@@ -123,43 +123,88 @@
 				<!-- Two -->
 					<section id="two">
 						<h2>Recent Work</h2>
-						<p>Nothing to see yet, but something is coming..</p>
-						<!--<div class="row">
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/01.jpg" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
-								<h3>Magna sed consequat tempus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/02.jpg" alt="" /></a>
-								<h3>Ultricies lacinia interdum</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/03.jpg" class="image fit thumb"><img src="images/thumbs/03.jpg" alt="" /></a>
-								<h3>Tortor metus commodo</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/04.jpg" class="image fit thumb"><img src="images/thumbs/04.jpg" alt="" /></a>
-								<h3>Quam neque phasellus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Nunc enim commodo aliquet</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Risus ornare lacinia</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
+
+												<!-- Tag filter buttons — lisää/poista tageja tarpeen mukaan -->
+						<div class="project-filters">
+							<button class="filter-btn active" data-filter="all">All</button>
+							<button class="filter-btn" data-filter="Tableau">Tableau</button>
+							<button class="filter-btn" data-filter="IT Service Management">IT Service Management</button>
+							<button class="filter-btn" data-filter="Data Driven Decision Making">Data Driven Decision Making</button>
+							<button class="filter-btn" data-filter="Python">Python</button>
+							<button class="filter-btn" data-filter="Data Analytics">Data Analytics</button>
 						</div>
-						<ul class="actions">
-							<li><a href="#" class="button">Full Portfolio</a></li>
-						</ul>-->
+
+						<!-- Projektikorttien ruudukko
+						     Muokkaa data-attribuutteja projektikohtaisesti:
+						       data-tags       = pilkulla erotettu lista tageista (oltava sama kuin filter-btn data-filter)
+						       data-img        = polku isompaan kuvaan modaalissa
+						       data-desc       = pidempi kuvaus modaalissa
+						       data-link       = linkin URL (jätä tyhjäksi "" jos ei ole)
+						       data-link-label = linkin napin teksti (esim. "View on GitHub", "Read Thesis")
+						-->
+						<div class="projects-grid">
+
+							<article class="project-card"
+								data-tags="IT Service Management,Tableau,Data Driven Decision Making"
+								data-img="images/fulls/01.jpg"
+								data-desc="This master's thesis investigates whether visualising CMDB (Configuration Management Database) data improves IT cost efficiency in public-sector organisations. Through semi-structured interviews with IT management stakeholders, the study identified that existing IT cost reporting lacked transparency and interpretability — particularly at the service and organisational levels. A business intelligence dashboard was designed and built in Tableau to display IT services, assets, and associated costs across multiple dimensions. The findings show that CMDB visualisation can meaningfully enhance cost transparency and support data-driven decision-making, provided that underlying data quality and governance practices are in place. The thesis recommends continuous data management, refined data models, and the accumulation of historical data to maximise long-term value."
+								data-link="https://www.theseus.fi/handle/10024/912387"
+								data-link-label="Read Thesis (Theseus)">
+								<div class="project-thumb">
+									<img src="images/thumbs/01.jpg" alt="CMDB Data Visualisation Dashboard" />
+									<div class="project-thumb-overlay"><span>View Project</span></div>
+								</div>
+								<div class="project-card-body">
+									<h3>CMDB Data Visualisation Dashboard</h3>
+									<p>M.B.A. thesis — Tableau BI dashboard for IT cost transparency and data-driven decision-making in a public-sector organisation.</p>
+									<div class="project-tags">
+										<span class="tag">IT Service Management</span>
+										<span class="tag">Tableau</span>
+										<span class="tag">Data Driven Decision Making</span>
+									</div>
+								</div>
+							</article>
+
+							<article class="project-card"
+								data-tags="Python,Data Analytics"
+								data-img="images/fulls/02.jpg"
+								data-desc="A data analytics project completed during M.B.A. studies at Oulu University of Applied Sciences (Autumn 2024). Personal electricity consumption data was combined with Nord Pool spot pricing data to compare the actual costs of a fixed-price contract against what a spot-price contract would have cost over the same period. The analysis goes further to model expected future costs based on the household's own usage profile and historical price patterns, producing a data-driven recommendation on which contract type is financially better suited to the home. Built entirely in Python using pandas for data manipulation and matplotlib for visualisation."
+								data-link="https://github.com/GeekyFin/dam"
+								data-link-label="View on GitHub">
+								<div class="project-thumb">
+									<img src="images/thumbs/02.jpg" alt="Electricity Cost Analysis" />
+									<div class="project-thumb-overlay"><span>View Project</span></div>
+								</div>
+								<div class="project-card-body">
+									<h3>Electricity Cost Analysis</h3>
+									<p>Python analysis comparing fixed-price vs. spot-price electricity contracts using personal consumption data and Nord Pool pricing.</p>
+									<div class="project-tags">
+										<span class="tag">Python</span>
+										<span class="tag">Data Analytics</span>
+									</div>
+								</div>
+							</article>
+
+						</div>
+						<!-- /projects-grid -->
+
 					</section>
+
+				<!-- Project modal — aukeaa projektikorttia klikatessa -->
+				<div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-label="Project details">
+					<div class="modal-box">
+						<button class="modal-close" aria-label="Close">&times;</button>
+						<div class="modal-image">
+							<img id="modal-img" src="" alt="" />
+						</div>
+						<div class="modal-details">
+							<h3 id="modal-title"></h3>
+							<div id="modal-tags" class="project-tags"></div>
+							<p id="modal-desc" class="modal-desc"></p>
+							<a id="modal-link" href="#" target="_blank" rel="noopener" class="button primary">View on GitHub</a>
+						</div>
+					</div>
+				</div>
 
 				<!-- Three -->
 					<section id="three">
@@ -524,7 +569,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					<ul class="copyright">
 						<li>&copy; Mikko Sortti</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><br/>
 					</ul>
-					<p style="font-style: italic;font-size: small;">Created and edited with Visual Studio<br/>Local development in Docker container<br/>Site hosted by Github</p>
+					<p style="font-style: italic;font-size: small;">Created and edited in VS Code with Claude<br/>Site hosted by Github</p>
 				</div>
 			</footer>
 
@@ -538,14 +583,68 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 		<script type="text/javascript">
 			$(document).ready(function(){
-					$("#naytadivi").click(function(){
-						if ($("#lisaa:first").is(":hidden")) {
-							$("#lisaa").slideDown("slow");
+
+				// --- Timeline toggle ---
+				$("#naytadivi").click(function(){
+					if ($("#lisaa:first").is(":hidden")) {
+						$("#lisaa").slideDown("slow");
+					} else {
+						$("#lisaa").slideUp("slow");
+					}
+				});
+
+				// --- Project modal ---
+				var $modal = $("#project-modal");
+
+				function openModal(card) {
+					var $card = $(card);
+					var tags  = ($card.data("tags") || "").split(",").map(function(t){ return t.trim(); }).filter(Boolean);
+					var link  = $card.data("link") || "";
+
+					$("#modal-img").attr("src", $card.data("img") || "").attr("alt", $card.find("h3").text());
+					$("#modal-title").text($card.find("h3").text());
+					$("#modal-desc").text($card.data("desc") || "");
+
+					var tagHtml = tags.map(function(t){ return '<span class="tag">' + $("<div>").text(t).html() + "</span>"; }).join("");
+					$("#modal-tags").html(tagHtml);
+
+					if (link) {
+						var linkLabel = $card.data("link-label") || "View Project";
+						$("#modal-link").attr("href", link).text(linkLabel).show();
+					} else {
+						$("#modal-link").hide();
+					}
+
+					$modal.addClass("is-open");
+					$("body").css("overflow", "hidden");
+				}
+
+				function closeModal() {
+					$modal.removeClass("is-open");
+					$("body").css("overflow", "");
+				}
+
+				$(document).on("click", ".project-card", function(){ openModal(this); });
+				$(document).on("click", ".modal-close", closeModal);
+				$modal.on("click", function(e){ if ($(e.target).is($modal)) closeModal(); });
+				$(document).on("keydown", function(e){ if (e.key === "Escape") closeModal(); });
+
+				// --- Tag filter ---
+				$(document).on("click", ".filter-btn", function(){
+					var filter = $(this).data("filter");
+					$(".filter-btn").removeClass("active");
+					$(this).addClass("active");
+
+					$(".project-card").each(function(){
+						var tags = ($(this).data("tags") || "").split(",").map(function(t){ return t.trim(); });
+						if (filter === "all" || tags.indexOf(filter) !== -1) {
+							$(this).removeClass("hidden");
 						} else {
-							$("#lisaa").slideUp("slow");
-							//$("div#lisaa").hide();
+							$(this).addClass("hidden");
 						}
-					  });
+					});
+				});
+
 			});
 
 			const chartWrapper = document.querySelector(".chart-wrapper");
