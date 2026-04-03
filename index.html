@@ -9,7 +9,7 @@
 		<title>Mikko Sortti</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css?v=2" />
 		<link rel="stylesheet" href="assets/css/timeline.css" />
 
 	</head>
@@ -664,10 +664,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			window.addEventListener("scroll", scrollHandler);
 
 			function scrollHandler() {
-			window.pageYOffset > 0
-				? scrollDown.classList.add("is-hidden")
-				: scrollDown.classList.remove("is-hidden");
-			if (isElementInViewport(chartWrapper)) chartWrapper.classList.add("in-view");
+			if (scrollDown) {
+				window.pageYOffset > 0
+					? scrollDown.classList.add("is-hidden")
+					: scrollDown.classList.remove("is-hidden");
+			}
+			if (chartWrapper && isElementInViewport(chartWrapper)) chartWrapper.classList.add("in-view");
 			}
 
 		</script>
