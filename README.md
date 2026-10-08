@@ -16,7 +16,7 @@ Preview at http://127.0.0.1:4317. Rebuild after changing content or `src/index.h
 
 ## Content management
 
-Projects live in `content/projects/*.md`; articles in `content/posts/*.md`. Each file starts with JSON metadata between `---` lines. Supported body syntax is deliberately simple: paragraphs, `##` headings, and blocks of `-` list items. HTML is escaped. No invented publication dates or results.
+Projects live in `content/projects/*.md`; articles in `content/posts/*.md`. Each file starts with JSON metadata between `---` lines. Supported body syntax is deliberately simple: paragraphs, `##` headings, `**bold emphasis**`, and blocks of `-` list items. HTML is escaped. No invented publication dates or results.
 
 Required fields: `slug`, `title`, `summary`, `tags`. Project `order` controls sorting. Articles require a real `date` in YYYY-MM-DD format and sort newest first. Set `draft: true` to hide an unfinished entry. Optional `link` must use HTTPS and needs `linkLabel`. Slugs are unique across both collections and form shareable URLs such as `/#cmdb`.
 
@@ -47,7 +47,7 @@ Explain how the work was done.
 Describe verified results and practical limits.
 ```
 
-For a post, add `date` and use headings appropriate to the topic. Build validates required metadata, dates and unique slugs. Projects currently use abstract decorative graphics, not screenshots or measured results.
+For a post, add `date` and use headings appropriate to the topic. Optional `authorNote` adds a separate note at the end of the reader, for example to disclose help with editing. Build validates required metadata, dates and unique slugs. Project screenshots use the shared image and gallery templates.
 
 ## Design and review
 

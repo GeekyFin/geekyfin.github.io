@@ -20,3 +20,6 @@ test('Markdown escapes HTML rather than executing author markup',()=>{
 test('headings and paragraphs stay separate without a blank line',()=>{
  assert.equal(markdown('## The question:\nA clear question.\nContinued here.\n\n## My contribution:\n- First item\n- Second item'),'<h3>The question:</h3>\n<p>A clear question. Continued here.</p>\n<h3>My contribution:</h3>\n<ul><li>First item</li><li>Second item</li></ul>');
 });
+test('renders emphasis while keeping embedded HTML escaped',()=>{
+ assert.equal(markdown('It is **impact**.\n\n**<script>unsafe</script>**'),'<p>It is <strong>impact</strong>.</p>\n<p><strong>&lt;script&gt;unsafe&lt;/script&gt;</strong></p>');
+});

@@ -15,12 +15,13 @@ export function parseContent(text, kind, filename) {
   return {...meta, kind, body: match[2].trim()};
 }
 export function markdown(body) {
+  const inline = text => escapeHtml(text).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
   const output = [];
   let lines = [], type = null;
   const flush = () => {
     if (lines.length) output.push(type === 'list'
-      ? `<ul>${lines.map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul>`
-      : `<p>${escapeHtml(lines.join(' '))}</p>`);
+      ? `<ul>${lines.map(line => `<li>${inline(line)}</li>`).join('')}</ul>`
+      : `<p>${inline(lines.join(' '))}</p>`);
     lines = []; type = null;
   };
   for (const line of body.split(/\r?\n/)) {
