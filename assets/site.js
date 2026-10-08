@@ -24,9 +24,10 @@ function openStory(slug, source, updateHistory = false) {
   return true;
 }
 function clearReader() {
-  if (dialog.open) dialog.close();
+  const wasOpen = dialog.open;
+  if (wasOpen) dialog.close();
   document.body.classList.remove('reading');
-  trigger?.focus({preventScroll:true});
+  if (wasOpen) trigger?.focus({preventScroll:true});
 }
 function closeStory() {
   clearReader();
@@ -41,6 +42,13 @@ if (typeof dialog.showModal === 'function') {
     event.preventDefault();openStory(link.dataset.story,link,true);
   }));
   closeButton.addEventListener('click',closeStory);
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const controls = [...dialog.querySelectorAll('button, a[href], input, select, textarea')].filter(el => !el.disabled && el.getClientRects().length);
+    const first = controls[0], last = controls.at(-1);
+    if (event.shiftKey && document.activeElement === first) {event.preventDefault();last.focus();}
+    else if (!event.shiftKey && document.activeElement === last) {event.preventDefault();first.focus();}
+  });
   dialog.addEventListener('cancel', event => {event.preventDefault();closeStory();});
   dialog.addEventListener('click',event => {
     if (event.target !== dialog) return;
@@ -48,6 +56,7 @@ if (typeof dialog.showModal === 'function') {
     if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeStory();
   });
   const syncLocation = () => {
+    pushed = history.state?.story === location.hash.slice(1);
     if (!openStory(location.hash.slice(1),null)) {clearReader();pushed=false;}
   };
   window.addEventListener('popstate',syncLocation);

@@ -10,7 +10,25 @@ const fs=require('node:fs');
  await page.waitForSelector('dialog[open]');assert.equal(new URL(page.url()).hash,'#cmdb');
  await page.keyboard.press('Escape');await page.waitForSelector('dialog[open]',{state:'hidden'});
  await page.goForward();await page.waitForSelector('dialog[open]');
- await page.goBack();await page.waitForSelector('dialog[open]',{state:'hidden'});
+ await page.locator('.reader-close').click();await page.waitForSelector('dialog[open]',{state:'hidden'});
+ await page.waitForFunction(()=>!location.hash);
+ for (const slug of ['cmdb','electricity','activity-recommender']) {
+  await page.goto('http://127.0.0.1:4318');
+  await page.locator(`[data-story="${slug}"]`).click();await page.waitForSelector('dialog[open]');
+  const scroll = await page.evaluate(()=>scrollY);
+  for (let i=0;i<5;i++) {
+   await page.keyboard.press('Tab');
+   assert.equal(await page.evaluate(()=>document.querySelector('dialog').contains(document.activeElement)),true);
+  }
+  await page.keyboard.press('Escape');await page.waitForSelector('dialog[open]',{state:'hidden'});
+  assert.equal(await page.evaluate(()=>scrollY),scroll);
+  assert.equal(await page.locator(`[data-story="${slug}"]`).evaluate(el=>el===document.activeElement),true);
+ }
+ await page.goto('http://127.0.0.1:4318');
+ for (const href of await page.locator('nav a').evaluateAll(links=>links.map(link=>link.getAttribute('href')))) assert.equal(await page.locator(href).count(),1);
+ const assets=await page.locator('img,link[rel="stylesheet"],script[src]').evaluateAll(els=>els.map(el=>el.src || el.href));
+ for (const url of assets) assert.equal((await page.request.get(url)).ok(),true,`Missing asset: ${url}`);
+ assert.deepEqual(await page.locator('.skill-meter').evaluateAll(els=>els.map(el=>el.getAttribute('aria-valuenow'))),['4','4','2','1']);
  await page.goto('http://127.0.0.1:4318/#electricity');await page.waitForSelector('dialog[open]');
  assert.match(await page.locator('#reader-title').textContent(),/Household Energy Analytics/);
  assert.equal(await page.locator('.reader-body .story-figure').count(),2);
